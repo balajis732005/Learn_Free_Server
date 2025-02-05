@@ -30,8 +30,6 @@ public class EmailService {
     public void sendEmail(
             String toEmail,
             String fullName,
-            String accessProvider,
-            String projectName,
             EmailTemplateName emailTemplateName,
             String activationCode,
             String subject
@@ -49,8 +47,6 @@ public class EmailService {
                 Map<String,Object> properties = new HashMap<>();
                 properties.put("userName",fullName);
                 properties.put("activationCode",activationCode);
-                properties.put("accessProvider",accessProvider);
-                properties.put("projectName",projectName);
 
                 Context context = new Context();
                 context.setVariables(properties);
@@ -62,10 +58,9 @@ public class EmailService {
 
                 mimeMessageHelper.setText(emailTemplate,true);
 
-                mimeMessageHelper.addInline("logo",new ClassPathResource("name_flow_logo.jpeg"));
+                mimeMessageHelper.addInline("logo",new ClassPathResource("learn_free_logo.jpeg"));
             }
         };
-
 
         javaMailSender.send(mimeMessagePreparator);
     }

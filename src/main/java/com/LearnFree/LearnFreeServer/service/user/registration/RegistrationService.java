@@ -10,9 +10,7 @@ public interface RegistrationService {
 
     ResponseDTO registrationEmailValidation(String email) throws MessagingException;
 
-    ResponseDTO departmentRegistration(RegistrationRequestDTO registrationRequestDTO)
+    ResponseDTO userRegistration(RegistrationRequestDTO registrationRequestDTO)
             throws MessagingException;
-
-    ResponseDTO staffRegistration(RegistrationRequestDTO registrationRequestDTO);
 
 }

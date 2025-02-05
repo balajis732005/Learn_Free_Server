@@ -42,8 +42,6 @@ public class RegistrationServiceImpl implements RegistrationService{
         String generatedActivationCode = generateActivationCode();
         emailService.sendEmail(email,
                 "",
-                "",
-                "",
                 EmailTemplateName.VERIFY_EMAIL,
                 generatedActivationCode,
                 "Learn Free - Email Verification");
@@ -61,7 +59,7 @@ public class RegistrationServiceImpl implements RegistrationService{
     }
 
     @Override
-    public ResponseDTO departmentRegistration(
+    public ResponseDTO userRegistration(
             RegistrationRequestDTO registrationRequestDTO
     ) throws MessagingException {
 
@@ -92,11 +90,6 @@ public class RegistrationServiceImpl implements RegistrationService{
         return presentResponse;
     }
 
-    @Override
-    public ResponseDTO staffRegistration(RegistrationRequestDTO registrationRequestDTO) {
-        return null;
-    }
-
     private ResponseDTO verifyActivationCode(RegistrationRequestDTO registrationRequestDTO) throws MessagingException {
         if(!verificationDataRepository.existsByEmail(registrationRequestDTO.getEmail())){
             return ResponseDTO.builder()
@@ -123,11 +116,9 @@ public class RegistrationServiceImpl implements RegistrationService{
             String generatedActivationCode = generateActivationCode();
             emailService.sendEmail(registrationRequestDTO.getEmail(),
                     "",
-                    "",
-                    "",
                     EmailTemplateName.VERIFY_EMAIL,
                     generatedActivationCode,
-                    "Name Flow - Email Verification");
+                    "Learn Free - Email Verification");
             verificationData.setActivationCode(generatedActivationCode);
             verificationData.setCreatedDate(LocalDateTime.now());
             verificationData.setExpiresDate(LocalDateTime.now().plusMinutes(10));
