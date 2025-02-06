@@ -52,7 +52,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 .firstName(userData.getFirstName())
                 .lastName(userData.getLastName())
                 .gender(userData.getGender())
-                .age(userData.getAge())
                 .mobileNumber(userData.getMobileNumber())
                 .email(userAuthentication.getEmail())
                 .department(userData.getDepartment())

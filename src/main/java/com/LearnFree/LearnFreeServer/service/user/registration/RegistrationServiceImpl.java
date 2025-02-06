@@ -44,7 +44,7 @@ public class RegistrationServiceImpl implements RegistrationService{
                 "",
                 EmailTemplateName.VERIFY_EMAIL,
                 generatedActivationCode,
-                "Learn Free - Email Verification");
+                "Learn Free - personalEmail Verification");
         VerificationData verificationData= VerificationData.builder()
                 .email(email)
                 .activationCode(generatedActivationCode)
@@ -54,7 +54,7 @@ public class RegistrationServiceImpl implements RegistrationService{
         verificationDataRepository.save(verificationData);
         return ResponseDTO.builder()
                 .status(true)
-                .message("Verification Email has been Sent Successfully")
+                .message("Verification personalEmail has been Sent Successfully")
                 .build();
     }
 
@@ -71,7 +71,6 @@ public class RegistrationServiceImpl implements RegistrationService{
                     .firstName(registrationRequestDTO.getFirstName())
                     .lastName(registrationRequestDTO.getLastName())
                     .gender(registrationRequestDTO.getGender())
-                    .age(registrationRequestDTO.getAge())
                     .mobileNumber(registrationRequestDTO.getMobileNumber())
                     .department(registrationRequestDTO.getDepartment())
                     .build();
@@ -94,7 +93,7 @@ public class RegistrationServiceImpl implements RegistrationService{
         if(!verificationDataRepository.existsByEmail(registrationRequestDTO.getEmail())){
             return ResponseDTO.builder()
                     .status(false)
-                    .message("User Not registered there Email")
+                    .message("User Not registered there personalEmail")
                     .build();
         }
         if(!verificationDataRepository.existsByActivationCode(registrationRequestDTO.getActivationCode())){
@@ -109,7 +108,7 @@ public class RegistrationServiceImpl implements RegistrationService{
         if(!Objects.equals(verificationData.getEmail(), registrationRequestDTO.getEmail())){
             return ResponseDTO.builder()
                     .status(false)
-                    .message("Activation Code is Not Match with your Email")
+                    .message("Activation Code is Not Match with your personalEmail")
                     .build();
         }
         if(LocalDateTime.now().isAfter(verificationData.getExpiresDate())){
@@ -118,7 +117,7 @@ public class RegistrationServiceImpl implements RegistrationService{
                     "",
                     EmailTemplateName.VERIFY_EMAIL,
                     generatedActivationCode,
-                    "Learn Free - Email Verification");
+                    "Learn Free - personalEmail Verification");
             verificationData.setActivationCode(generatedActivationCode);
             verificationData.setCreatedDate(LocalDateTime.now());
             verificationData.setExpiresDate(LocalDateTime.now().plusMinutes(10));

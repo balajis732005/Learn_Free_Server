@@ -65,18 +65,10 @@ public class JwtFilter extends OncePerRequestFilter {
     }
 
     @Override
-    protected boolean shouldNotFilter(@NonNull HttpServletRequest request) throws ServletException {
-        return request.getServletPath().contains("/name-flow/registration/email-validation")
+    protected boolean shouldNotFilter(@NonNull HttpServletRequest request) {
+        return request.getServletPath().contains("/learn-free/registration/personalEmail-validation")
 
-                || request.getServletPath().contains("/name-flow/registration/verification")
-
-                || request.getServletPath().contains("/name-flow/authentication")
-
-                || request.getServletPath().contains("/name-flow/reset-password")
-
-                || request.getServletPath().contains("/name-flow/forget-password");
-
-
+                || request.getServletPath().contains("/learn-free/registration/verify");
 
     }
 }

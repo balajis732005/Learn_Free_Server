@@ -29,8 +29,8 @@ public class UserAccount {
     @Column(name="gender")
     private String gender;
 
-    @Column(name="age")
-    private Integer age;
+    @Column(name="date_of_birth")
+    private String dateOfBirth;
 
     @Column(name="mobile_number")
     private String mobileNumber;
@@ -38,4 +38,18 @@ public class UserAccount {
     @Column(name="department")
     private String department;
 
+    @Column(name="personal_email")
+    private String personalEmail;
+
+    @Column(name = "registration_number")
+    private String registrationNumber;
+
+    @Column(name = "github")
+    private String github;
+
+    @Column(name = "linked_in")
+    private String linkedIn;
+
+    @Column(name = "qualifications")
+    private String qualifications;
 }
