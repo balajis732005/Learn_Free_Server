@@ -35,7 +35,7 @@ public class UserAccount {
     @Column(name="mobile_number")
     private String mobileNumber;
 
-    @Column(name="role")
-    private String role;
+    @Column(name="department")
+    private String department;
 
 }
