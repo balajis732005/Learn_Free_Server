@@ -58,7 +58,7 @@ public class EmailService {
 
                 mimeMessageHelper.setText(emailTemplate,true);
 
-                mimeMessageHelper.addInline("logo",new ClassPathResource("learn_free_logo.jpeg"));
+                mimeMessageHelper.addInline("logo",new ClassPathResource("learn_free_logo.png"));
             }
         };
 
