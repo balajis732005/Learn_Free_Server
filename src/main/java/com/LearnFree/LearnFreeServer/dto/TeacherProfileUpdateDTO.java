@@ -1,15 +1,13 @@
 package com.LearnFree.LearnFreeServer.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class TeacherProfileUpdateDTO {
+public class TeacherProfileUpdateDTO extends ProfileUpdateDTO {
     private String firstName;
     private String lastName;
     private String gender;

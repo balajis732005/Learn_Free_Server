@@ -5,14 +5,14 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.4.2</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<version>3.3.1</version>
+		<relativePath/>
 	</parent>
-	<groupId>com.LearnFree</groupId>
-	<artifactId>LearnFreeServer</artifactId>
+	<groupId>com.Learn_Free.</groupId>
+	<artifactId>Learn_Free_Server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>LearnFreeServer</name>
-	<description>Student Effective Backend</description>
+	<name>Learn_Free_Server</name>
+	<description>Department Management</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -96,18 +96,6 @@
 
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<annotationProcessorPaths>
-						<path>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok</artifactId>
-						</path>
-					</annotationProcessorPaths>
-				</configuration>
-			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>

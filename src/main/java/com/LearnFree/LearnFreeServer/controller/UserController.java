@@ -43,32 +43,33 @@ public class UserController {
         return ResponseEntity.ok(authenticationService.authenticate(authenticationRequestDTO));
     }
 
-    @PostMapping("/profile/update")
-    public ResponseEntity<ResponseDTO> updateProfile(
-            @RequestBody Object profileUpdateDTO,
+    @PostMapping("/profile/student/update")
+    public ResponseEntity updateStudentProfile(
+            @RequestBody StudentProfileUpdateDTO studentProfileUpdateDTO,
             @AuthenticationPrincipal UserAuthentication userAuthentication
     ) {
         String userEmail = userAuthentication.getEmail();
-        RoleEnum role = userAuthentication.getRole();
+        ResponseDTO response = profileService.updateStudentProfile(userEmail, studentProfileUpdateDTO);
+        return ResponseEntity.ok(response);
+    }
 
-        ResponseDTO response;
-        switch (role) {
-            case STUDENT:
-                response = profileService.updateStudentProfile(userEmail, (StudentProfileUpdateDTO) profileUpdateDTO);
-                break;
-            case STAFF:
-                response = profileService.updateTeacherProfile(userEmail, (TeacherProfileUpdateDTO) profileUpdateDTO);
-                break;
-            case PRINCIPAL:
-                response = profileService.updatePrincipalProfile(userEmail, (PrincipalProfileUpdateDTO) profileUpdateDTO);
-                break;
-            default:
-                return ResponseEntity.badRequest().body(ResponseDTO.builder()
-                        .status(false)
-                        .message("Invalid role")
-                        .build());
-        }
+    @PostMapping("/profile/teacher/update")
+    public ResponseEntity updateTeacherProfile(
+            @RequestBody TeacherProfileUpdateDTO teacherProfileUpdateDTO,
+            @AuthenticationPrincipal UserAuthentication userAuthentication
+    ) {
+        String userEmail = userAuthentication.getEmail();
+        ResponseDTO response = profileService.updateTeacherProfile(userEmail, teacherProfileUpdateDTO);
+        return ResponseEntity.ok(response);
+    }
 
+    @PostMapping("/profile/principal/update")
+    public ResponseEntity updatePrincipalProfile(
+            @RequestBody PrincipalProfileUpdateDTO principalProfileUpdateDTO,
+            @AuthenticationPrincipal UserAuthentication userAuthentication
+    ) {
+        String userEmail = userAuthentication.getEmail();
+        ResponseDTO response = profileService.updatePrincipalProfile(userEmail, principalProfileUpdateDTO);
         return ResponseEntity.ok(response);
     }
     @GetMapping("/profile/view/{userId}")
