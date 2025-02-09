@@ -1,7 +1,6 @@
 package com.LearnFree.LearnFreeServer.controller;
 
 import com.LearnFree.LearnFreeServer.dto.*;
-import com.LearnFree.LearnFreeServer.entity.RoleEnum;
 import com.LearnFree.LearnFreeServer.entity.UserAuthentication;
 import com.LearnFree.LearnFreeServer.service.user.authentication.AuthenticationService;
 import com.LearnFree.LearnFreeServer.service.user.profile.ProfileService;
@@ -44,7 +43,7 @@ public class UserController {
     }
 
     @PostMapping("/profile/student/update")
-    public ResponseEntity updateStudentProfile(
+    public ResponseEntity<ResponseDTO> updateStudentProfile(
             @RequestBody StudentProfileUpdateDTO studentProfileUpdateDTO,
             @AuthenticationPrincipal UserAuthentication userAuthentication
     ) {

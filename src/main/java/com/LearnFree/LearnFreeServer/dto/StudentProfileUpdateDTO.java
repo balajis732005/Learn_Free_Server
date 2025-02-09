@@ -15,7 +15,6 @@ public class StudentProfileUpdateDTO extends ProfileUpdateDTO {
     private String mobileNumber;
     private String department;
     private String personalEmail;
-    private String registrationNumber;
     private String github;
     private String linkedIn;
 }
