@@ -16,4 +16,5 @@ public class TeacherProfileUpdateDTO extends ProfileUpdateDTO {
     private String department;
     private String personalEmail;
     private String qualifications;
+    private String bio;
 }

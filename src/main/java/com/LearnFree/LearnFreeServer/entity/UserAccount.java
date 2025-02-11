@@ -52,4 +52,7 @@ public class UserAccount {
 
     @Column(name = "qualifications")
     private String qualifications;
+
+    @Column(name = "bio")
+    private String bio;
 }

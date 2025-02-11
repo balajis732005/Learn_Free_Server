@@ -17,4 +17,5 @@ public class StudentProfileUpdateDTO extends ProfileUpdateDTO {
     private String personalEmail;
     private String github;
     private String linkedIn;
+    private String bio;
 }
