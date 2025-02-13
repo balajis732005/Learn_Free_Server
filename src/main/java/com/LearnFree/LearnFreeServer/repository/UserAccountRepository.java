@@ -11,5 +11,6 @@ import java.util.Optional;
 public interface UserAccountRepository extends JpaRepository<UserAccount, Long> {
     Optional<UserAccount> findById(Long id);
     List<UserAccount> findByDepartment(String department);
+    List<UserAccount> findByDepartmentAndAcademicYear(String department, Integer academicYear);
 
 }

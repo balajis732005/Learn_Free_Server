@@ -6,7 +6,5 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public interface StaffService {
-
-    ResponseDTO addStudents(MultipartFile file, String department);
-
+    ResponseDTO addStudents(MultipartFile file, String department, Integer academicYear);
 }

@@ -32,4 +32,6 @@ public class RegistrationRequestDTO {
 
     private String activationCode;
 
+    private String academicYear;
+
 }

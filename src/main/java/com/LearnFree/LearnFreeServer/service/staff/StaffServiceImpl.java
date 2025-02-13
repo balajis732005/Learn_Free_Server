@@ -28,7 +28,8 @@ public class StaffServiceImpl implements StaffService {
     private final PasswordEncoder passwordEncoder;
 
     @Override
-    public ResponseDTO addStudents(MultipartFile file, String department) {
+    public ResponseDTO addStudents(MultipartFile file, String department, Integer
+            academicYear) {
         if (!isValidExcelFile(file)) {
             return ResponseDTO.builder()
                     .status(false)
@@ -69,6 +70,8 @@ public class StaffServiceImpl implements StaffService {
                             regNo = getCellValueAsString(cell);
                             userAccount.setRegistrationNumber(regNo);
                         }
+                        case 6 -> userAccount.setAcademicYear(Integer.parseInt(getCellValueAsString(cell)));
+                        case 7 -> userAccount.setSemester(Integer.parseInt(getCellValueAsString(cell)));
                     }
                     cellIndex++;
                 }
@@ -78,6 +81,7 @@ public class StaffServiceImpl implements StaffService {
                 }
 
                 userAccount.setDepartment(department);
+                userAccount.setAcademicYear(academicYear);
 
                 UserAccount savedUser = userAccountRepository.save(userAccount);
 

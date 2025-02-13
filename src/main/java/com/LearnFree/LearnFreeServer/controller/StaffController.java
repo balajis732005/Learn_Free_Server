@@ -24,20 +24,19 @@ public class StaffController {
     @PostMapping("/staff/add-students")
     public ResponseEntity<ResponseDTO> readOperationExcel(
             @RequestParam("students_data") MultipartFile students_data,
-            @RequestParam("department") String department
-    ){
-        return ResponseEntity.ok(staffService.addStudents(students_data,department));
+            @RequestParam("department") String department,
+            @RequestParam("academicYear") Integer academicYear) {
+        return ResponseEntity.ok(staffService.addStudents(students_data, department, academicYear));
     }
 
     @GetMapping("/staff/students")
-    public ResponseEntity<List<UserAccount>> getStudentsByDepartment(@RequestParam String department) {
-        List<UserAccount> students = userAccountRepository.findByDepartment(department);
-
-        if (students == null || students.isEmpty()) {
-            return ResponseEntity.ok(Collections.emptyList()); // Ensure an empty array is returned instead of null
-        }
-
-        return ResponseEntity.ok(students);
+    public ResponseEntity<List<UserAccount>> getStudentsByDepartmentAndYear(
+            @RequestParam String department,
+            @RequestParam Integer academicYear
+    ) {
+        List<UserAccount> students = userAccountRepository
+                .findByDepartmentAndAcademicYear(department, academicYear);
+        return ResponseEntity.ok(students != null ? students : Collections.emptyList());
     }
 
 
