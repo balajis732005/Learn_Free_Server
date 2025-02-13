@@ -6,6 +6,10 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name="user_account")
 @Data
@@ -55,4 +59,45 @@ public class UserAccount {
 
     @Column(name = "bio")
     private String bio;
+
+    @Column(name = "academic_year")
+    private Integer academicYear;
+
+    @Column(name = "semester")
+    private Integer semester;
+
+    @Column(name = "major")
+    private String major;
+
+    @Column(name = "gpa")
+    private Double gpa;
+
+    @Column(name = "advisor")
+    private String advisor;
+
+    @Column(name = "enrollment_date")
+    private LocalDate enrollmentDate;
+
+    @Column(name = "expected_graduation")
+    private LocalDate expectedGraduation;
+
+    @ElementCollection
+    @CollectionTable(name = "user_achievements", joinColumns = @JoinColumn(name = "user_id"))
+    @Column(name = "achievement")
+    private List<String> achievements = new ArrayList<>();
+
+    @ElementCollection
+    @CollectionTable(name = "user_activities", joinColumns = @JoinColumn(name = "user_id"))
+    @Column(name = "activity")
+    private List<String> activities = new ArrayList<>();
+
+    @ElementCollection
+    @CollectionTable(name = "user_courses", joinColumns = @JoinColumn(name = "user_id"))
+    @Column(name = "course")
+    private List<String> courses = new ArrayList<>();
+
+    @ElementCollection
+    @CollectionTable(name = "user_profile_certificates", joinColumns = @JoinColumn(name = "user_id"))
+    @Column(name = "certificate")
+    private List<String> certificates = new ArrayList<>();
 }
