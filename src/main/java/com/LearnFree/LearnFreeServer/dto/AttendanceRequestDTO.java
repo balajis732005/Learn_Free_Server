@@ -14,6 +14,7 @@ import java.util.List;
 public class AttendanceRequestDTO {
     private String date;
     private String department;
-    private String semester;
+    private Integer semester;
     private List<StudentAttendanceDTO> students;
+    private Integer academicYear;
 }

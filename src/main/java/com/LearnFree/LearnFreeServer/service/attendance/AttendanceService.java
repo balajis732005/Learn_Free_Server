@@ -23,12 +23,14 @@ public class AttendanceService {
                     .present(student.isPresent())
                     .department(request.getDepartment())
                     .semester(request.getSemester())
+                    .academicYear(request.getAcademicYear())
                     .build();
             attendanceRepository.save(attendance);
         });
     }
 
-    public List<Attendance> getAttendanceHistory(Long userId, String department, String semester) {
-        return attendanceRepository.findByUserIdAndDepartmentAndSemester(userId, department, semester);
+    public List<Attendance> getAttendanceHistory(String department, Integer academicYear, Integer semester) {
+        return attendanceRepository.findByDepartmentAndAcademicYearAndSemester(
+                department, academicYear, semester);
     }
 }

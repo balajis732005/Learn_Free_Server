@@ -28,9 +28,10 @@ public class AttendanceController {
 
     @GetMapping("/history")
     public ResponseEntity<List<Attendance>> getAttendanceHistory(
-            @RequestParam Long userId,
             @RequestParam String department,
-            @RequestParam String semester) {
-        return ResponseEntity.ok(attendanceService.getAttendanceHistory(userId, department, semester));
+            @RequestParam Integer academicYear,
+            @RequestParam Integer semester
+    ) {
+        return ResponseEntity.ok(attendanceService.getAttendanceHistory(department, academicYear, semester));
     }
 }

@@ -32,5 +32,8 @@ public class Attendance {
     private String department;
 
     @Column(nullable = false)
-    private String semester;
+    private Integer semester;
+
+    @Column(nullable = false)
+    private Integer academicYear;
 }
