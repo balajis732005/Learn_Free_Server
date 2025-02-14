@@ -20,8 +20,6 @@ public class RegistrationRequestDTO {
 
     private String gender;
 
-    private Integer age;
-
     private String mobileNumber;
 
     private String email;
@@ -33,5 +31,7 @@ public class RegistrationRequestDTO {
     private String department;
 
     private String activationCode;
+
+    private String academicYear;
 
 }

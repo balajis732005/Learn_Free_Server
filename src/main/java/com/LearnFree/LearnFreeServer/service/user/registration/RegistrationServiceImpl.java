@@ -71,7 +71,6 @@ public class RegistrationServiceImpl implements RegistrationService{
                     .firstName(registrationRequestDTO.getFirstName())
                     .lastName(registrationRequestDTO.getLastName())
                     .gender(registrationRequestDTO.getGender())
-                    .age(registrationRequestDTO.getAge())
                     .mobileNumber(registrationRequestDTO.getMobileNumber())
                     .department(registrationRequestDTO.getDepartment())
                     .build();
