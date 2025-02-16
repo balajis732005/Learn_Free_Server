@@ -21,6 +21,21 @@ public class GradeData {
     private Long id;
 
     @Column(name="user_id")
-    private Long user_id;
+    private Long userId;
+
+    @Column(name="reg_num")
+    private String registrationNumber;
+
+    @Column(name="exam_name")
+    private String examName;
+
+    @Column(name="subject_name")
+    private String subjectName;
+
+    @Column(name="grade")
+    private String grade;
+
+    @Column(name="mark")
+    private Double mark;
 
 }

@@ -13,4 +13,6 @@ public interface UserAccountRepository extends JpaRepository<UserAccount, Long> 
     List<UserAccount> findByDepartment(String department);
     List<UserAccount> findByDepartmentAndAcademicYear(String department, Integer academicYear);
 
+    UserAccount findByRegistrationNumber(String regNum);
+
 }
