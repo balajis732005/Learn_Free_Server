@@ -1,9 +1,11 @@
 package com.LearnFree.LearnFreeServer.service.staff;
 
 import com.LearnFree.LearnFreeServer.dto.ResponseDTO;
+import com.LearnFree.LearnFreeServer.entity.Department;
 import com.LearnFree.LearnFreeServer.entity.RoleEnum;
 import com.LearnFree.LearnFreeServer.entity.UserAccount;
 import com.LearnFree.LearnFreeServer.entity.UserAuthentication;
+import com.LearnFree.LearnFreeServer.repository.DepartmentRepository;
 import com.LearnFree.LearnFreeServer.repository.UserAccountRepository;
 import com.LearnFree.LearnFreeServer.repository.UserAuthenticationRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +19,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.Iterator;
-import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -26,6 +27,7 @@ public class StaffServiceImpl implements StaffService {
     private final UserAccountRepository userAccountRepository;
     private final UserAuthenticationRepository userAuthenticationRepository;
     private final PasswordEncoder passwordEncoder;
+    private final DepartmentRepository departmentRepository;
 
     @Override
     public ResponseDTO addStudents(MultipartFile file, String department, Integer
@@ -80,7 +82,9 @@ public class StaffServiceImpl implements StaffService {
                     continue;
                 }
 
-                userAccount.setDepartment(department);
+                Department departmentEntity = (Department) departmentRepository.findByCode(department)
+                        .orElseThrow(() -> new IllegalArgumentException("Department not found"));
+                userAccount.setDepartment(departmentEntity);
                 userAccount.setAcademicYear(academicYear);
 
                 UserAccount savedUser = userAccountRepository.save(userAccount);
@@ -117,7 +121,7 @@ public class StaffServiceImpl implements StaffService {
     }
 
     private boolean isValidExcelFile(MultipartFile file) {
-        return Objects.equals(file.getContentType(),
-                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+        String filename = file.getOriginalFilename();
+        return filename != null && filename.toLowerCase().endsWith(".xlsx");
     }
 }

@@ -34,10 +34,7 @@ public class StaffController {
             @RequestParam String department,
             @RequestParam Integer academicYear
     ) {
-        List<UserAccount> students = userAccountRepository
-                .findByDepartmentAndAcademicYear(department, academicYear);
+        List<UserAccount> students = userAccountRepository.findByDepartment_CodeAndAcademicYear(department, academicYear);
         return ResponseEntity.ok(students != null ? students : Collections.emptyList());
     }
-
-
 }

@@ -10,7 +10,6 @@ import java.util.Optional;
 @Repository
 public interface UserAccountRepository extends JpaRepository<UserAccount, Long> {
     Optional<UserAccount> findById(Long id);
-    List<UserAccount> findByDepartment(String department);
-    List<UserAccount> findByDepartmentAndAcademicYear(String department, Integer academicYear);
 
+    List<UserAccount> findByDepartment_CodeAndAcademicYear(String departmentCode, Integer academicYear);
 }
